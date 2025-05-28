@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.antispoofingservice.model.MonitoringResult;
 import com.example.antispoofingservice.service.MonitoringService;
 
 @RestController
-@RequestMapping("/api/v1/monitor")
+//@RequestMapping("/api/v1/monitor")
 @CrossOrigin(origins = "*") // Permite peticiones desde cualquier origen (para la UI)
 public class MonitoringController {
 
