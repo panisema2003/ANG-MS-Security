@@ -1,0 +1,5 @@
+com\example\antispoofingservice\service\MonitoringService.class
+com\example\antispoofingservice\service\MonitoringService$MonitoringStatistics.class
+com\example\antispoofingservice\AntispoofingserviceApplication.class
+com\example\antispoofingservice\controller\MonitoringController.class
+com\example\antispoofingservice\model\MonitoringResult.class
