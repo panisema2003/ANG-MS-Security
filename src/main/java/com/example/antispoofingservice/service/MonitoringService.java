@@ -25,7 +25,7 @@ public class MonitoringService {
     private AtomicLong spoofingDetections = new AtomicLong(0);
 
     // Microservicios a monitorear (simulados por ahora)
-    private final String[] targetMicroservices = {"django-service-1", "django-service-2"};
+    private final String[] targetMicroservices = {"MS Medico", "MS Historia clinica"};
 
     public String startMonitoring() {
         if (scheduler != null && !scheduler.isShutdown()) {
@@ -37,7 +37,7 @@ public class MonitoringService {
         spoofingDetections.set(0);
 
         scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(this::performCheck, 0, 5, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this::performCheck, 0, 2, TimeUnit.SECONDS);
 
         // Detener el monitoreo después de 1 minuto (12 verificaciones en total)
         scheduler.schedule(() -> {
@@ -65,10 +65,10 @@ public class MonitoringService {
             if (spoofingDetected) {
                 spoofingDetections.incrementAndGet();
                 message = "¡ALERTA! Spoofing detectado en " + serviceName;
-                System.out.println(message + " - " + totalChecks.get() + " de 12");
+                System.out.println(message + " - " + totalChecks.get() + " de 30");
             } else {
                 message = "No se detectó spoofing en " + serviceName;
-                System.out.println(message + " - " + totalChecks.get() + " de 12");
+                System.out.println(message + " - " + totalChecks.get() + " de 30");
             }
             results.add(new MonitoringResult(serviceName, spoofingDetected, message));
         }
@@ -87,7 +87,7 @@ public class MonitoringService {
 
         // Por ejemplo, haremos que 1 de cada 5 comprobaciones (20% de probabilidad general)
         // se marque como spoofing detectado para que sea visible.
-        return random.nextInt(100) < 20; // 20% de probabilidad de detectar spoofing
+        return random.nextInt(100) < 10; // 20% de probabilidad de detectar spoofing
     }
 
     public List<MonitoringResult> getLatestResults() {
