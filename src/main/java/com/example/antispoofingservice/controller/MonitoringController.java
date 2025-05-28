@@ -11,7 +11,7 @@ import com.example.antispoofingservice.model.MonitoringResult;
 import com.example.antispoofingservice.service.MonitoringService;
 
 @RestController
-//@RequestMapping("/api/v1/monitor")
+//@RequestMapping("seguridad")
 @CrossOrigin(origins = "*") // Permite peticiones desde cualquier origen (para la UI)
 public class MonitoringController {
 
