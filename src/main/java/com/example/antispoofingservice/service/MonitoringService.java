@@ -46,10 +46,10 @@ public class MonitoringService {
         this.restTemplate = restTemplate;
         this.kongBaseUrl = kongBaseUrl;
         // Inicializar las URLs aquí, una vez que kongBaseUrl esté disponible
-        MEDICO_STATUS_URL = kongBaseUrl + "/personal-medico/status";
-        MEDICO_SPOOFED_URL = kongBaseUrl + "/personal-medico/spoofed-status";
-        HC_STATUS_URL = kongBaseUrl + "/historia-clinica/status";
-        HC_SPOOFED_URL = kongBaseUrl + "/historia-clinica/spoofed-status";
+        MEDICO_STATUS_URL = kongBaseUrl + "/personal-medico/status/";
+        MEDICO_SPOOFED_URL = kongBaseUrl + "/personal-medico/spoofed-status/";
+        HC_STATUS_URL = kongBaseUrl + "/historia-clinica/status/";
+        HC_SPOOFED_URL = kongBaseUrl + "/historia-clinica/spoofed-status/";
     }
 
     public String startMonitoring() {
