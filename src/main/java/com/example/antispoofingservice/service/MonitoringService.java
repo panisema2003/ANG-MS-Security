@@ -10,10 +10,7 @@ import java.util.concurrent.TimeUnit; // Import RestTemplate
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.antispoofingservice.model.MonitoringResult;
@@ -110,6 +107,10 @@ public class MonitoringService {
             actualSpoofingEvents.incrementAndGet(); // Contar que un evento de spoofing ha "ocurrido"
             System.out.println("DEBUG: Se ha simulado un evento de spoofing para " + serviceName);
             // Intentar llamar al endpoint que simula un estado de spoofing
+            currentSpoofingDetected = true;
+            message = "¡ALERTA! Spoofing DETECTADO en " + serviceName + " (vía /spoofed-status).";
+
+            /*
             try {
                 ResponseEntity<String> response = restTemplate.getForEntity(spoofedUrl, String.class);
                 if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
@@ -131,8 +132,11 @@ public class MonitoringService {
             } catch (Exception e) { // Otros errores
                 message = "Error inesperado al contactar " + serviceName + " (vía /spoofed-status): " + e.getMessage();
             }
+                 */
         } else {
             // No se simuló un evento de spoofing. Llamar al endpoint de estado normal.
+            message = "El servicio " + serviceName + " (vía /status) está OK.";
+            /*
             try {
                 ResponseEntity<String> response = restTemplate.getForEntity(statusUrl, String.class);
                 if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
@@ -154,7 +158,7 @@ public class MonitoringService {
                 message = "Error de conexión/red al contactar " + serviceName + " (vía /status): " + e.getMessage();
             } catch (Exception e) {
                 message = "Error inesperado al contactar " + serviceName + " (vía /status): " + e.getMessage();
-            }
+            } */
         }
 
         if (currentSpoofingDetected) {
