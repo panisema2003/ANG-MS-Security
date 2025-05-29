@@ -86,6 +86,7 @@ public class MonitoringService {
 
     private void performCheck() {
         totalChecks.incrementAndGet();
+        totalChecks.incrementAndGet();
 
         // Chequear MS Medico
         checkAndReport("MS Medico", MEDICO_STATUS_URL, MEDICO_SPOOFED_URL);
