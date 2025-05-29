@@ -101,7 +101,7 @@ public class MonitoringService {
 
         // Decide aleatoriamente si provocamos un evento de "spoofing" (llamando al endpoint spoofed)
         // Esto simula que "ocurre" un evento de spoofing real que nuestro servicio "debería" detectar.
-        boolean shouldSimulateSpoofingEvent = random.nextInt(100) < 40; // 40% de probabilidad de que "ocurra" un evento de spoofing simulado
+        boolean shouldSimulateSpoofingEvent = random.nextInt(100) < 20; // 20% de probabilidad de que "ocurra" un evento de spoofing simulado
 
         if (shouldSimulateSpoofingEvent) {
             actualSpoofingEvents.incrementAndGet(); // Contar que un evento de spoofing ha "ocurrido"
